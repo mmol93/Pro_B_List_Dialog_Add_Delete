@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         // Dialog의 "수정" 버튼을 눌렀을 때
                         if (i == 0){
-                            
+
                         }
                     }
                     dialogBuilder.show()
