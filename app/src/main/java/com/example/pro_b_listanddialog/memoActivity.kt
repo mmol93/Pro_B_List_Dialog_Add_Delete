@@ -3,6 +3,7 @@ package com.example.pro_b_listanddialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.pro_b_listanddialog.databinding.ActivityMainBinding
 import com.example.pro_b_listanddialog.databinding.ActivityMemoBinding
 
@@ -17,9 +18,10 @@ class memoActivity : AppCompatActivity() {
 
         // cancel 버튼 클릭시
         MemoBinding.memoActCancelButton2.setOnClickListener {
+            val toast = Toast.makeText(this, "취소했습니다", Toast.LENGTH_SHORT)
+            toast.show()
             finish()
         }
-        setContentView(MemoBinding.root)
 
         // save 버튼 클릭시
         MemoBinding.memoActSaveButton.setOnClickListener {
@@ -30,6 +32,11 @@ class memoActivity : AppCompatActivity() {
             memoIntent.putExtra("memo", MemoBinding.memoActEditText2.text.toString())
             // 종료하기 전 이 액티비티의 데이터 정보 저장
             setResult(RESULT_OK, memoIntent)
+            // 아무것도 입력하지 않고 "save" 버튼을 누를 시 토스트 출력
+            if (MemoBinding.memoActEditText.text.toString() == ""){
+                val toast = Toast.makeText(this, "제목을 입력하세요", Toast.LENGTH_SHORT)
+                toast.show()
+            }
             finish()
         }
         setContentView(MemoBinding.root)
